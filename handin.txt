@@ -1,0 +1,58 @@
+lab7 
+
+2. Run your program using array size 1000 for 100 repetitions. What is the average number of comparisons?
+
+11004
+
+Run your program with a few different choices of NN (array size). How does the number of comparisons
+change with NN?
+
+NN=10, comps = 23
+NN=100, comps = 663
+NN=10000, comps = 152633
+
+- if we increase the number of NN, the comparisons increase
+- when we increase the number of NN 10 times, the comparisons will increase 20 times approximately.
+ 
+
+4. If I remove the call to randint from the function qc and explicitly calculate the average number of
+comparisons, I might get the following code:
+float c(int n) {
+if (n <= 1) return 0;
+float sum = 0.0;
+for (int m=1; m <= n; m++)
+sum += n-1 + c(m-1) + c(n-m);
+return sum / n;
+}
+Write the value, C(n), returned by c(n) as a recurrence relation. (It will have a summation and should
+look similar to the program, but in mathematical notation.)
+Warning: You should not run this code for n much bigger than 20 unless you’re very patient (and have
+a long life). The running time is Ω(3n).
+c(n) = sum/n={(n-1)^2+2[C(0)+C(1)+.....+C(n-1)]}/n
+     = {(n-1)^2+2(sum from i=0 to n-1)C(i)}/n
+	 
+
+
+5. Answer the following questions in a few short sentences:
+What are the run times for quicksort in 
+A) the average case?
+O(nlgn)
+
+B) the worst case? Why are you
+unlikely to observe the worst-case run time, in practice?
+Is our implementation of quicksort an in-place sort? Is it a stable sort? Why or why not?
+O(n^2)
+because the worst case happens when the pivot point is in the first or last index of the array. So if 
+we use the function of random to generate a random number for pivot point, it is quite difficult to always 
+get a number for the first index.
+
+C)Is our implementation of quicksort an in-place sort? Is it a stable sort? Why or why not?
+
+No, because it needs to create a new memory space. Because it is tail recursion. 
+
+
+Yes this is a stable sort. If the pivot value equals to the compared value, it doesn't do any 
+thing, so it will stay at the same place.
+
+
+ 
